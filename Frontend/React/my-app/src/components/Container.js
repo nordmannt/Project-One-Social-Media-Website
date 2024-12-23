@@ -37,6 +37,7 @@ export const NewsFeedContainer = styled.div`
 
 
 export const ProfileContainer = styled.div`
+
   width: 100%;
   padding: ${theme.spacing.lg};
   background-color: ${theme.colors.background};

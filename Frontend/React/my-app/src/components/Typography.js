@@ -3,6 +3,7 @@ import { theme } from '../styles/Themes';
 
 /* Main Title (h1) */
 export const MainTitle = styled.h1`
+ textShadow: ${theme.shadows.large};
   font-size: 2rem;
   font-weight: ${theme.fonts.bold};
   color: ${theme.colors.primary};
@@ -28,6 +29,7 @@ export const Text = styled.p`
 
 /* Small Text */
 export const SmallText = styled.p`
+ textShadow: ${theme.shadows.large};
   font-size: 0.875rem;
   color: ${theme.colors.textLight};
   line-height: 1.4;

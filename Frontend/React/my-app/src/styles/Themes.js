@@ -32,7 +32,7 @@ export const theme = {
     extraBold: "800",                      // Font weight for extra bold text
     heading: "'Bebas Neue', sans-serif",   // Postmodern bold sans-serif for headings
   },
-  
+
   typography: {
     fontFamily: "'Roboto', sans-serif",
     h1: {
@@ -154,7 +154,56 @@ export const theme = {
   accent: "linear-gradient(135deg, #E07A5F, #F4ACB7)", // Warm terracotta red to pastel pink
 },
 
-
+friendSearchContainer: {
+    position: "sticky", // Keeps it in place relative to the viewport
+    top: 0, // You can adjust this depending on where you want it to stick
+    backgroundColor: "white", // Ensures the background stays visible
+    zIndex: 1000, // Brings it above other elements
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: "10px",
+    borderBottom: "1px solid #ddd", // Optional: Adds a bottom border for separation
+  },
+  searchInput: {
+    width: "200px",
+    padding: "5px",
+    marginRight: "10px",
+  },
+  searchButton: {
+    padding: "5px 10px",
+    backgroundColor: "blue",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
+  resultsList: {
+    listStyleType: "none",
+    padding: "10px",
+  },
+  resultItem: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    marginBottom: "10px",
+  },
+  profilePicture: {
+    width: "50px",
+    height: "50px",
+    borderRadius: "50%",
+  },
+  resultName: {
+    fontWeight: "bold",
+  },
+  addFriendButton: {
+    padding: "5px 10px",
+    backgroundColor: "green",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
 
   
 };

@@ -110,8 +110,8 @@ import io.jsonwebtoken.JwtException;
      }
 
      @GetMapping("/account/search")
-     public ResponseEntity<List<Account>> searchUsers(@RequestParam String query) {
-         List<Account> users = accountService.searchUsers(query);
+     public ResponseEntity<List<AccountDTO>> searchUsers(@RequestParam String query) {
+         List<AccountDTO> users = accountService.searchUsers(query);
          return ResponseEntity.ok(users);
      }
 

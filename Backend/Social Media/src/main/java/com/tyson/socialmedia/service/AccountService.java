@@ -1,12 +1,15 @@
 
 package com.tyson.socialmedia.service;
 
-import com.tyson.socialmedia.entity.Account;
+import com.tyson.socialmedia.DTO.AccountDTO;
+import com.tyson.socialmedia.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.tyson.socialmedia.repository.AccountRepository;
-import java.util.Optional;
+import com.tyson.socialmedia.repository.ProfileRepository;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 //Creating AccountService class to interface between the controller and the message repository
 @Service
@@ -15,6 +18,9 @@ public class AccountService {
     //dependency injection to obtain an instance of the AccountRepository class
     @Autowired
     private AccountRepository accountRepository;
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     //register method to take an Account object and create a new record in the repository
     public Account register(Account account){
@@ -27,9 +33,28 @@ public class AccountService {
     }
 
 
-    public List<Account> searchUsers(String query) { // Fixed the return type syntax
-        return accountRepository.searchUsers(query);
-    }
+   public List<AccountDTO> searchUsers(String query) {
+    // Fetch accounts based on query
+    List<Account> accounts = accountRepository.searchUsers(query);
+
+    // Map Account to AccountDTO, including Profile data
+    return accounts.stream()
+            .map(account -> {
+                // Fetch profile for the account
+                Profile profile = profileRepository.findByAccount_AccountId(account.getAccountId());
+                
+                // Return a new AccountDTO
+                return new AccountDTO(
+                        account.getAccountId(),
+                        account.getFirstName(),
+                        account.getLastName(),
+                        profile != null ? profile.getAvatarUrl() : null // Add profile picture if available
+                );
+            })
+            .collect(Collectors.toList()); // Collect into a list
+}
+
+    
 
     //login method to check that the username and password are valid for the account
    // public boolean login(Account account){

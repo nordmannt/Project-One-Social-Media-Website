@@ -1,50 +1,55 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { theme } from "../styles/Themes";
-import {  PrimaryButton, SecondaryButton, Input, MainTitle, SmallText } from "../components";
-
-const Navbar = ({ userId, onLogout }) => {
+import {  PrimaryButton, SecondaryButton, Input, MainTitle, SmallText, ProfileContainer } from "../components";
+import FriendSearch from "./FriendSearch";
+const Navbar = ({ userId, profilePicture, onLogout }) => {
   const navigate = useNavigate();
 
   return (
     <div style={styles.navbar}>
-      {/* Logo Area */}
-      <div style={styles.navbarLeft}>
-        <MainTitle a= "span" style={styles.logo} onClick={() => navigate("/news-feed")}>
-          Chummy
-        </MainTitle>
-      </div>
-
-      {/* Navigation Links */}
-      <div style={styles.navbarCenter}>
-        
-        <Link to="/news-feed" style={styles.link}>
-        <SmallText>News Feed</SmallText></Link>
-          
-        <Link to={`/profile/${userId}`} style={styles.link}><SmallText>Profile</SmallText></Link>
-             
-        <Link to="/friends-list" style={styles.link}><SmallText>Friends</SmallText></Link>
-              
-        <Link to="/notifications" style={styles.link}><SmallText>Notifications</SmallText></Link>
-        
-        <Link to={`/profile/${userId}`} style={styles.link}><SmallText>Profile</SmallText></Link>
-        </div>
-
-      {/* User Actions */}
-      <div style={styles.navbarRight}>
-        <Input
-          placeholder="Search..."
-          style={styles.searchBar}
-          onChange={(e) => console.log("Type to search:", e.target.value)}
+    {/* Top Section: Profile Picture and Logo */}
+    <div style={styles.navbarTop}>
+      <div
+        style={styles.profileContainer}
+        onClick={() => navigate(`/profile/${userId}`)}
+      >
+        <img
+          src={profilePicture || "https://via.placeholder.com/50"}
+          alt="Profile"
+          style={styles.profilePicture}
         />
-        <SecondaryButton style={styles.button} onClick={() => navigate(`/profile/${userId}`)}>
-          Profile
-        </SecondaryButton>
-        <PrimaryButton style={styles.button} onClick={onLogout}>
-          Logout
-        </PrimaryButton>
-      </div>
+     </div>
+     </div>
+  
+    {/* Bottom Section: Buttons */}
+    <div style={styles.navbarBottom}>
+    <MainTitle as="span" style={styles.logo} onClick={() => navigate("/news-feed")}>
+        Chummy
+      </MainTitle>
+      <Link to={`/profile/${userId}`} style={styles.link}>
+        <SmallText>Profile</SmallText>
+      </Link>
+      <Link to="/friends-list" style={styles.link}>
+      <SmallText>Friends</SmallText>
+      </Link>
+      <Link to="/notifications" style={styles.link}>
+      <SmallText>Notifications</SmallText>
+      </Link>
+
+      <FriendSearch>
+        placeholder="Search..."
+        style={styles.searchBar}
+        onChange={(e) => console.log("Type to search:", e.target.value)}
+      </FriendSearch>
+      
+      <PrimaryButton style={styles.button} onClick={onLogout}>
+        Logout
+      </PrimaryButton>
     </div>
+  </div>
+  
+  
   );
 };
 
@@ -60,18 +65,25 @@ const styles = {
         width: "100%", // Ensure it spans the full width
         
       },
-      
+      navbarBottom: {
+        display: "flex", // Arrange buttons in a row
+        justifyContent: "center", // Center the buttons
+        alignItems: "center",
+        gap: theme.spacing.md, // Space between buttons
+      },
   navbarLeft: {
     display: "flex",
     alignItems: "center",
   },
   logo: {
+    
     fontFamily: theme.fonts.heading,
     fontSize: theme.typography.h1.fontSize,
     color: theme.colors.primary,
     cursor: "pointer",
   },
   navbarCenter: {
+    alignItems: "center",
     display: "flex",
     gap: theme.spacing.md,
   },
@@ -79,6 +91,13 @@ const styles = {
     color: theme.colors.white,
     textDecoration: "none",
     fontSize: theme.typography.body1.fontSize,
+  },
+  profilePicture: {
+    width: "150px",
+    height: "150px",
+    borderRadius: "50%", // Circular profile picture
+    objectFit: "cover", // Ensure picture scales correctly
+    marginBottom: theme.spacing.xs,
   },
   navbarRight: {
     display: "flex",
