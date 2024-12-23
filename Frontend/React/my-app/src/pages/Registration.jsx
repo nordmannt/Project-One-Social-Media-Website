@@ -6,7 +6,7 @@ import {
   ContainerCard,
   ContainerPlain,
   Input,
-  Title,
+  MainTitle,
 } from '../components';
 
 
@@ -55,7 +55,7 @@ const Register = () => {
 
   return (
     <ContainerCard>
-      <Title>Register</Title>
+      <MainTitle>Register</MainTitle>
       <form onSubmit={handleSubmit}>
         <Input
           type="text"

@@ -1,5 +1,55 @@
 import styled from 'styled-components';
 
+
+
+import { theme } from '../styles/Themes';
+
+export const NavbarContainer = styled.div`
+  width: 100%;                /* Full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: ${theme.spacing.sm};
+  background-color: ${theme.colors.white};
+  color: ${theme.colors.white};
+  box-shadow: ${theme.shadows.small};
+  position: relative;         /* Ensures it's in the normal document flow */
+  z-index: 1000;              /* Ensures it stays above other elements */
+  border-radius: ${theme.radius.lg}; /* Add rounded corners */
+   border: 5px solid ${theme.colors.primary}; /* Thick purple border */
+  border-radius: ${theme.radius.md}; /* Rounded corners */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow around the navbar */
+`;
+
+
+
+export const NewsFeedContainer = styled.div`
+  width: 100%;                /* Full width */
+  flex: 1;                    /* Allows it to stretch within the parent container */
+  padding: ${theme.spacing.lg};
+  background-color: ${theme.colors.background.white};
+  display: flex;
+  flex-direction: column;     /* Stacks content vertically */
+  align-items: center;        /* Centers content horizontally */
+`;
+
+
+
+
+export const ProfileContainer = styled.div`
+  width: 100%;
+  padding: ${theme.spacing.lg};
+  background-color: ${theme.colors.background};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;          /* Ensures it spans the full viewport height */
+`;
+
+
+
+
+
 export const Container = styled.div`
   display: flex;
   flex-direction: row;

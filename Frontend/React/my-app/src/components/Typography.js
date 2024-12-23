@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../styles/Themes';
 
 /* Main Title (h1) */
-export const Title = styled.h1`
+export const MainTitle = styled.h1`
   font-size: 2rem;
   font-weight: ${theme.fonts.bold};
   color: ${theme.colors.primary};

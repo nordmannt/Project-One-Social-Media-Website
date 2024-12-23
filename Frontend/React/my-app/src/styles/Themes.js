@@ -32,6 +32,26 @@ export const theme = {
     extraBold: "800",                      // Font weight for extra bold text
     heading: "'Bebas Neue', sans-serif",   // Postmodern bold sans-serif for headings
   },
+  
+  typography: {
+    fontFamily: "'Roboto', sans-serif",
+    h1: {
+      fontSize: "2.5rem", // Heading 1 size
+      fontWeight: "700",
+    },
+    h2: {
+      fontSize: "2rem", // Heading 2 size
+      fontWeight: "600",
+    },
+    body1: {
+      fontSize: "1rem",
+      fontWeight: "400",
+    },
+    small: {
+      fontSize: "0.875rem",
+      fontWeight: "400",
+    },
+  },
 
   // Radius (Rounded corners)
   radius: {
@@ -113,4 +133,28 @@ export const theme = {
     gradient: "linear-gradient(135deg, #6A5ACD, #FF9F1C)", // Soft purple to mustard yellow gradient
     hoverEffect: "transform: scale(1.03)", // Slight scale-up on hover
   },
+
+  interactive:{
+    buttonHover: "#5A4FCF", // Slightly darker shade for hover state
+    buttonActive: "#4A3FCF", // Even darker for active state
+    linkHover: "#FFAA33",   // Slightly brighter secondary color
+    linkActive: "#E07A5F",  // Accent color for active links
+  },
+
+  media: {
+    sm: "@media (max-width: 576px)", // Small screens
+    md: "@media (max-width: 768px)", // Medium screens
+    lg: "@media (max-width: 992px)", // Large screens
+    xl: "@media (max-width: 1200px)", // Extra large screens
+  },
+
+  gradients: {
+  primary: "linear-gradient(135deg, #6A5ACD, #4A4E69)", // From primary to dark
+  secondary: "linear-gradient(135deg, #FF9F1C, #D88C00)", // Retro mustard yellow
+  accent: "linear-gradient(135deg, #E07A5F, #F4ACB7)", // Warm terracotta red to pastel pink
+},
+
+
+
+  
 };

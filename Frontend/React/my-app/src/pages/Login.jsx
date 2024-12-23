@@ -7,7 +7,7 @@ import {
   PrimaryButton,
   ContainerPlain,
   Input,
-  Title,
+  MainTitle,
   LogoContainer,
   LogoSection,
   FormSection,
@@ -83,7 +83,7 @@ const Login = () => {
         }}
       >
         <ContainerCard style={{ width: '100%', maxWidth: '400px' }}>
-          <Title style={{ marginBottom: '1rem', textAlign: 'center' }}>Login</Title>
+          <MainTitle style={{ marginBottom: '1rem', textAlign: 'center' }}>Login</MainTitle>
           <form onSubmit={handleSubmit}>
             <Input
               type="text"
