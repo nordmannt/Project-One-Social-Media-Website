@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Feed</title>
+    <style>
+        #messageForm{
+            width: 60%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .message-container {
+            width: 60%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <form id="messageForm">
+        <textarea id="messageText" placeholder="Create a Post"></textarea>
+        <button type="submit">Post Message</button>
+    </form>
+    
+    <h2>Messages</h2>
+    <div class="message-container" id="messages-container">
+        <!-- Messages will be dynamically injected here -->
+    </div>
+
+    <script>
+    
+    document.getElementById('messageForm').addEventListener('submit', async (e) => {
+    e.preventDefault();  
+
+   
+    const messageText = document.getElementById('messageText').value;
+   
+   
+    if (messageText.trim() === "") return;
+
+    const messageData = {
+        messageText: messageText,
+        postedBy: 10000,  
+        timePostedEpoch: Date.now() / 1000  
+    };
+
+  
+    const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(messageData)
+    });
+
+    if (response.ok) {
+       
+        fetchMessages();
+    } else {
+        console.error('Error posting message');
+    }
+});
+
+
+
+
+        async function fetchMessages(){
+            const response = await fetch('/api/messages');
+            const messages = await response.json();
+
+            const messagesContainer = document.getElementById('messages-container');
+            messagesContainer.innerHTML = '';
+            if(messages.length === 0){
+                messagesContainer.innerHTML = '<p>No messages found.</p>';
+            }
+            else{
+                messages.forEach(message => {
+                    const messageElement = document.createElement('div');
+                    messageElement.classList.add('message');
+                    const timestamp = new Date(message.timePostedEpoch * 1000); 
+                    console.log(message.timePostedEpoch);
+                    messageElement.innerHTML = `
+                        <h4>Message from ${message.username}</h4>
+                        <p>${message.messageText}</p>
+                        <p><small>Posted at ${timestamp.toLocaleString()}</small></p>
+                    `;
+
+                    messagesContainer.appendChild(messageElement);
+                });
+            }
+        }
+
+        // Call the function to fetch messages when the page loads
+        fetchMessages();
+    </script>
+</body>
+</html>

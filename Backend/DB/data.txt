@@ -1,0 +1,89 @@
+CREATE DATABASE social_media;
+USE social_media;
+
+
+
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS likes;
+DROP TABLE IF EXISTS friends;
+
+CREATE TABLE account (
+    accountId INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255)
+);
+
+CREATE TABLE message (
+    messageId INT PRIMARY KEY AUTO_INCREMENT,
+    postedBy INT,
+    messageText VARCHAR(255),
+    timePostedEpoch BIGINT,
+    FOREIGN KEY (postedBy) REFERENCES account(accountId)
+);
+
+CREATE TABLE comments (
+    commentId INT PRIMARY KEY AUTO_INCREMENT,
+    commentedBy INT,
+    messageId INT,
+    commentText VARCHAR(255),
+    timePostedEpoch BIGINT,
+    FOREIGN KEY (commentedBy) REFERENCES account(accountId),
+    FOREIGN KEY (messageId) REFERENCES message(messageId)
+);
+
+CREATE TABLE likes (
+    likeId INT PRIMARY KEY AUTO_INCREMENT,
+    likedBy INT,
+    messageId INT,
+    commentId INT,
+    timePostedEpoch BIGINT,
+    FOREIGN KEY (likedBy) REFERENCES account(accountId),
+    FOREIGN KEY (messageId) REFERENCES message(messageId),
+    FOREIGN KEY (commentId) REFERENCES comments(commentId)
+);
+
+CREATE TABLE friends (
+    friendshipId INT PRIMARY KEY AUTO_INCREMENT,
+    friendA INT,
+    friendB INT,
+    status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
+    timePostedEpoch BIGINT,
+    FOREIGN KEY (friendA) REFERENCES account(accountId),
+    FOREIGN KEY (friendB) REFERENCES account(accountId)
+);
+
+-- Starting test values with IDs of 9999 to avoid test issues
+
+INSERT INTO account VALUES (9999, 'testuser1', 'password');
+INSERT INTO account VALUES (9998, 'testuser2', 'password');
+INSERT INTO account VALUES (9997, 'testuser3', 'password');
+INSERT INTO account VALUES (9996, 'testuser4', 'password');
+
+INSERT INTO message VALUES (9999, 9999, 'test message 1', 1669947792); -- Posted by testuser1
+INSERT INTO message VALUES (9998, 9998, 'test message 2', 1669947792); -- Posted by testuser2
+INSERT INTO message VALUES (9997, 9997, 'test message 3', 1669947792); -- Posted by testuser3
+INSERT INTO message VALUES (9996, 9996, 'test message 4', 1669947792); -- Posted by testuser4
+
+INSERT INTO comments VALUES (9999, 9999, 9999, 'This is a test comment on test message 1', 1669947792);
+INSERT INTO comments VALUES (9998, 9998, 9998, 'This is a test comment on test message 2', 1669947792);
+INSERT INTO comments VALUES (9997, 9997, 9997, 'This is a test comment on test message 3', 1669947792);
+INSERT INTO comments VALUES (9996, 9996, 9996, 'This is another test comment on test message 3', 1669947792);
+
+INSERT INTO likes VALUES (9999, 9999, 9999, NULL, 1669947792); -- Liked message 1
+INSERT INTO likes VALUES (9998, 9998, 9998, NULL, 1669947792); -- Liked message 2
+INSERT INTO likes VALUES (9997, 9997, 9997, NULL, 1669947792); -- Liked message 3
+INSERT INTO likes VALUES (9996, 9996, NULL, 9997, 1669947792); -- Liked comment on message 3
+
+INSERT INTO friends VALUES (9999, 9999, 9998, 'accepted', 1669947792); -- User 9999 and 9998 are friends
+INSERT INTO friends VALUES (9998, 9998, 9997, 'accepted', 1669947792); -- User 9998 and 9997 are friends
+INSERT INTO friends VALUES (9997, 9997, 9996, 'pending', 1669947792);  -- User 9997 sent a friend request to 9996
+INSERT INTO friends VALUES (9996, 9996, 9999, 'blocked', 1669947792);  -- User 9996 blocked 9999
+
+
+
+
+
+
+

@@ -1,0 +1,122 @@
+export const theme = {
+  // Colors
+  colors: {
+    primary: "#00C26F",          // Primary button or highlight color
+    primaryDark: "#00AC62",     // Darker shade for hover or active state
+    secondary: "#F44336",       // Secondary color (e.g., for error messages)
+    secondaryDark: "#D32F2F",   // Darker shade for secondary color
+    accent: "#FFEB3B",          // Accent color (e.g., for highlights, badges)
+    background: "#F5F5F5",      // Background color of the app
+    backgroundDark: "#212121",  // Dark background for dark mode or card items
+    text: "#494949",            // Primary text color
+    textLight: "#7C7C7C",       // Lighter text for secondary content
+    textDark: "#1D1D1D",        // Dark text for headings
+    white: "#FFFFFF",           // White color for background or text
+    black: "#000000",           // Black color for text or icons
+    gray: "#E3E3E3",            // Light gray for borders and backgrounds
+    rose: "#FF4444",            // Rose color for notifications or alerts
+    roseLight: "#FF7171",       // Lighter rose color
+    success: "#4CAF50",         // Success color (green for positive actions)
+    warning: "#FFC107",         // Warning color (yellow for caution)
+    info: "#2196F3",            // Info color (blue for informational messages)
+    danger: "#D32F2F",          // Error color (red for danger or errors)
+  },
+
+  // Typography
+  fonts: {
+    primary: "'Roboto', sans-serif", // Default font family
+    secondary: "'Open Sans', sans-serif", // Secondary font family for headings or highlights
+    medium: "500",                // Font weight for normal text
+    semibold: "600",              // Font weight for semi-bold text
+    bold: "700",                  // Font weight for bold text
+    extraBold: "800",             // Font weight for extra bold text
+    heading: "'Poppins', sans-serif", // Font family for headings
+  },
+
+  // Radius (for rounded corners)
+  radius: {
+    xs: "8px",   // Extra small radius
+    sm: "12px",  // Small radius
+    md: "14px",  // Medium radius
+    lg: "16px",  // Large radius
+    xl: "18px",  // Extra large radius
+    xxl: "22px", // Extra extra large radius
+  },
+
+  // Shadows
+  shadows: {
+    small: "0 1px 3px rgba(0, 0, 0, 0.1)",     // Light shadow for small elements
+    medium: "0 3px 6px rgba(0, 0, 0, 0.16)",   // Medium shadow for cards or buttons
+    large: "0 10px 15px rgba(0, 0, 0, 0.12)",   // Large shadow for modals or floating elements
+    extraLarge: "0 20px 30px rgba(0, 0, 0, 0.1)", // Deep shadow for more prominent elements
+  },
+
+  // Spacing (for margins, padding, and layout)
+  spacing: {
+    xs: "8px",   // Extra small spacing
+    sm: "16px",  // Small spacing
+    md: "24px",  // Medium spacing
+    lg: "32px",  // Large spacing
+    xl: "48px",  // Extra large spacing
+    xxl: "64px", // Extra extra large spacing
+  },
+
+  // Breakpoints for responsive design
+  breakpoints: {
+    sm: "576px",  // Small devices (phones)
+    md: "768px",  // Medium devices (tablets)
+    lg: "992px",  // Large devices (laptops)
+    xl: "1200px", // Extra large devices (desktops)
+    xxl: "1600px", // Ultra large screens (big monitors)
+  },
+
+  // Transitions for smooth animations
+  transitions: {
+    fast: "all 0.2s ease-in-out",   // Fast transitions for hover effects
+    medium: "all 0.4s ease-in-out", // Medium transitions for buttons
+    slow: "all 0.6s ease-in-out",   // Slow transitions for major elements
+  },
+
+  // Borders
+  borders: {
+    thin: "1px solid",     // Thin border for subtle elements
+    thick: "2px solid",    // Thick border for emphasis
+    radius: "8px",         // Default border radius for rounded corners
+    color: "#E3E3E3",      // Default border color (light gray)
+  },
+
+  // Z-Index (for stacking elements)
+  zIndex: {
+    modal: 1000,  // For modals
+    tooltip: 1100, // For tooltips
+    dropdown: 1200, // For dropdowns
+    overlay: 1300,  // For overlays or fullscreen elements
+  },
+
+  // Opacities
+  opacities: {
+    low: 0.3,   // Low opacity for disabled elements
+    medium: 0.6, // Medium opacity for inactive elements
+    high: 1,    // Full opacity for active elements
+  },
+
+  // Layout options
+  layout: {
+    containerMaxWidth: "1200px",  // Max width for main container
+    cardWidth: "300px",           // Width for cards
+    headerHeight: "60px",         // Height of the header
+    footerHeight: "50px",         // Height of the footer
+  },
+
+  // Icons (Optional if you use icon libraries like FontAwesome or Material Icons)
+  icons: {
+    search: "fa fa-search",  // Example of a FontAwesome search icon
+    close: "fa fa-times",    // Example of a FontAwesome close icon
+  },
+
+  // Special effects (like gradients, patterns, etc.)
+  effects: {
+    gradient: "linear-gradient(45deg, #00C26F, #00AC62)", // Gradient for buttons or backgrounds
+    hoverEffect: "transform: scale(1.05)", // Hover effect for scaling elements
+  },
+};

@@ -1,0 +1,165 @@
+CREATE DATABASE social_media;
+USE social_media;
+
+
+
+DROP TABLE IF EXISTS message;
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS likes;
+DROP TABLE IF EXISTS friends;
+
+CREATE TABLE account (
+    account_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255),
+    created_at_epoch BIGINT
+);
+
+CREATE TABLE message (
+    message_id INT PRIMARY KEY AUTO_INCREMENT,
+    posted_by INT,
+    message_text VARCHAR(500),
+    time_posted_epoch BIGINT,
+    FOREIGN KEY (posted_by) REFERENCES account(account_id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments (
+    comment_id INT PRIMARY KEY AUTO_INCREMENT,
+    commented_by INT NOT NULL,
+    message_id INT NOT NULL,
+    comment_text VARCHAR(500) NOT NULL,
+    time_posted_epoch BIGINT,
+    FOREIGN KEY (commented_by) REFERENCES account(account_id) ON DELETE CASCADE,
+    FOREIGN KEY (message_id) REFERENCES message(message_id) ON DELETE CASCADE
+);
+
+CREATE TABLE likes (
+    like_id INT AUTO_INCREMENT PRIMARY KEY,
+    liked_by INT NOT NULL,
+    message_id INT DEFAULT NULL,
+    comment_id INT DEFAULT NULL,
+    time_posted_epoch BIGINT NOT NULL,
+    FOREIGN KEY (liked_by) REFERENCES account(account_id) ON DELETE CASCADE,
+    FOREIGN KEY (message_id) REFERENCES message(message_id) ON DELETE CASCADE,
+    FOREIGN KEY (comment_id) REFERENCES comments(comment_id) ON DELETE CASCADE,
+    CONSTRAINT chk_one_foreign_key CHECK (
+        (message_id IS NOT NULL AND comment_id IS NULL) OR
+        (message_id IS NULL AND comment_id IS NOT NULL)
+    )
+);
+
+
+CREATE TABLE friends (
+    friendship_id INT PRIMARY KEY AUTO_INCREMENT,
+    friendA INT,
+    friendB INT,
+    status ENUM('pending', 'accepted', 'blocked') DEFAULT 'pending',
+    time_posted_epoch BIGINT,
+    FOREIGN KEY (friendA) REFERENCES account(account_id) ON DELETE CASCADE,
+    FOREIGN KEY (friendB) REFERENCES account(account_id) ON DELETE CASCADE,
+    UNIQUE(friendA, friendB) -- Ensure the combination of friendA and friendB is unique
+);
+
+-- Starting test values with IDs of 9999 to avoid test issues
+
+
+INSERT INTO account (account_id, first_name, last_name, username, password, created_at_epoch) VALUES
+(1001, 'John', 'Smith', 'johnsmith01', 'Passw0rd1!', 1713906000),
+(1002, 'Jane', 'Doe', 'janedoe02', 'SecurePass2!', 1713912000),
+(1003, 'Robert', 'Johnson', 'robertj03', 'Qwerty123!', 1713918000),
+(1004, 'Emily', 'Brown', 'emilyb04', 'MyPass#04', 1713924000),
+(1005, 'Alice', 'Walker', 'alicew05', 'AlicePass05!', 1713930000),
+(1006, 'Charlie', 'Wilson', 'charlie06', 'CharlieP@ss06', 1713936000),
+(1007, 'Diana', 'Adams', 'dianaa07', 'DianaPass07', 1713942000),
+(1008, 'Ethan', 'Clark', 'ethan08', 'EthanPass08', 1713948000),
+(1009, 'Fiona', 'Hall', 'fiona09', 'FionaP@ss09', 1713954000),
+(1010, 'George', 'King', 'george10', 'GeorgePass10!', 1713960000),
+(1011, 'Hannah', 'Moore', 'hannah11', 'HannahPass11!', 1713966000),
+(1012, 'Ian', 'Taylor', 'iantaylor12', 'IanPass12!', 1713972000),
+(1013, 'Jessica', 'White', 'jessica13', 'JessP@ss13!', 1713978000),
+(1014, 'Kyle', 'Martinez', 'kyle14', 'KylePass14!', 1713984000),
+(1015, 'Laura', 'Lee', 'laura15', 'LauraPass15!', 1713990000);
+
+
+INSERT INTO friends (friendship_id, friendA, friendB, status, time_posted_epoch) VALUES
+(5001, 1001, 1002, 'accepted', 1713956400),
+(5002, 1002, 1003, 'accepted', 1713960000),
+(5003, 1003, 1004, 'accepted', 1713963600),
+(5004, 1004, 1005, 'accepted', 1713967200),
+(5005, 1005, 1006, 'accepted', 1713970800),
+(5006, 1006, 1007, 'accepted', 1713974400),
+(5007, 1007, 1008, 'accepted', 1713978000),
+(5008, 1008, 1009, 'accepted', 1713981600),
+(5009, 1009, 1010, 'accepted', 1713985200),
+(5010, 1010, 1011, 'accepted', 1713988800),
+(5011, 1011, 1012, 'accepted', 1713992400),
+(5012, 1012, 1013, 'accepted', 1713996000),
+(5013, 1013, 1014, 'accepted', 1713999600),
+(5014, 1014, 1015, 'accepted', 1714003200);
+
+INSERT INTO message (message_id, posted_by, message_text, time_posted_epoch) VALUES
+(2001, 1001, 'Starting my day with some coding!', 1713906000),
+(2002, 1002, 'Excited for the weekend!', 1713912000),
+(2003, 1003, 'Just finished a new book.', 1713918000),
+(2004, 1004, 'Enjoying the weather today.', 1713924000),
+(2005, 1005, 'Hiking plans this weekend!', 1713930000),
+(2006, 1006, 'Working on a fun project.', 1713936000),
+(2007, 1007, 'Cooking a new recipe tonight.', 1713942000),
+(2008, 1008, 'Running my first 5k tomorrow!', 1713948000),
+(2009, 1009, 'Coffee and coding—best combo.', 1713954000),
+(2010, 1010, 'Looking for music recommendations.', 1713960000),
+(2011, 1011, 'Just started a new workout routine.', 1713966000),
+(2012, 1012, 'Gardening is so relaxing.', 1713972000),
+(2013, 1013, 'Planning a movie night.', 1713978000),
+(2014, 1014, 'Had an amazing hike today!', 1713984000),
+(2015, 1015, 'Trying out some photography.', 1713990000);
+
+INSERT INTO comments (comment_id, commented_by, message_id, comment_text, time_posted_epoch) VALUES
+(3001, 1002, 2001, 'Good luck with your coding!', 1713909600),
+(3002, 1003, 2002, 'Any plans for hiking?', 1713915600),
+(3003, 1004, 2003, 'What book did you read?', 1713921600),
+(3004, 1005, 2004, 'Great weather for a hike!', 1713927600),
+(3005, 1006, 2005, 'Where are you hiking?', 1713933600),
+(3006, 1007, 2006, 'Projects are always fun!', 1713939600),
+(3007, 1008, 2007, 'What are you cooking?', 1713945600),
+(3008, 1009, 2008, 'Good luck on the 5k!', 1713951600),
+(3009, 1010, 2009, 'Coffee and coding is life.', 1713957600),
+(3010, 1011, 2010, 'Check out classical music!', 1713963600),
+(3011, 1012, 2011, 'What’s your new routine?', 1713969600),
+(3012, 1013, 2012, 'Gardening is the best!', 1713975600),
+(3013, 1014, 2013, 'Movie suggestions?', 1713981600),
+(3014, 1015, 2014, 'Hiking is so refreshing.', 1713987600),
+(3015, 1001, 2015, 'Share your photos soon!', 1713993600);
+
+
+INSERT INTO likes (like_id, liked_by, message_id, comment_id, time_posted_epoch) VALUES
+(4001, 1003, 2001, NULL, 1713909600),
+(4002, 1004, 2002, NULL, 1713915600),
+(4003, 1005, 2003, NULL, 1713921600),
+(4004, 1006, 2004, NULL, 1713927600),
+(4005, 1007, 2005, NULL, 1713933600),
+(4006, 1008, 2006, NULL, 1713939600),
+(4007, 1009, 2007, NULL, 1713945600),
+(4008, 1010, 2008, NULL, 1713951600),
+(4009, 1011, 2009, NULL, 1713957600),
+(4010, 1012, 2010, NULL, 1713963600),
+(4011, 1013, 2011, NULL, 1713969600),
+(4012, 1014, 2012, NULL, 1713975600),
+(4013, 1015, 2013, NULL, 1713981600),
+(4014, 1001, 2014, NULL, 1713987600),
+(4015, 1002, 2015, NULL, 1713993600);
+
+
+
+
+
+
+
+
+
+
+
+
