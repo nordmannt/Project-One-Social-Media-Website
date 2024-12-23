@@ -67,21 +67,22 @@ CREATE TABLE friends (
 
 
 INSERT INTO account (account_id, first_name, last_name, username, password, created_at_epoch) VALUES
-(1001, 'John', 'Smith', 'johnsmith01', 'Passw0rd1!', 1713906000),
-(1002, 'Jane', 'Doe', 'janedoe02', 'SecurePass2!', 1713912000),
-(1003, 'Robert', 'Johnson', 'robertj03', 'Qwerty123!', 1713918000),
-(1004, 'Emily', 'Brown', 'emilyb04', 'MyPass#04', 1713924000),
-(1005, 'Alice', 'Walker', 'alicew05', 'AlicePass05!', 1713930000),
-(1006, 'Charlie', 'Wilson', 'charlie06', 'CharlieP@ss06', 1713936000),
-(1007, 'Diana', 'Adams', 'dianaa07', 'DianaPass07', 1713942000),
-(1008, 'Ethan', 'Clark', 'ethan08', 'EthanPass08', 1713948000),
-(1009, 'Fiona', 'Hall', 'fiona09', 'FionaP@ss09', 1713954000),
-(1010, 'George', 'King', 'george10', 'GeorgePass10!', 1713960000),
-(1011, 'Hannah', 'Moore', 'hannah11', 'HannahPass11!', 1713966000),
-(1012, 'Ian', 'Taylor', 'iantaylor12', 'IanPass12!', 1713972000),
-(1013, 'Jessica', 'White', 'jessica13', 'JessP@ss13!', 1713978000),
-(1014, 'Kyle', 'Martinez', 'kyle14', 'KylePass14!', 1713984000),
-(1015, 'Laura', 'Lee', 'laura15', 'LauraPass15!', 1713990000);
+(1001, 'William', 'Harrison', 'william01', 'Passw0rd1!', 1713906000),
+(1002, 'Emma', 'Clark', 'emma02', 'SecurePass2!', 1713912000),
+(1003, 'Ethan', 'Bennett', 'ethan03', 'Qwerty123!', 1713918000),
+(1004, 'Olivia', 'Peterson', 'olivia04', 'MyPass#04', 1713924000),
+(1005, 'Amelia', 'Roberts', 'amelia05', 'AmeliaPass05!', 1713930000),
+(1006, 'James', 'Morgan', 'james06', 'JamesP@ss06', 1713936000),
+(1007, 'Isabella', 'Wood', 'isabella07', 'IsabellaPass07', 1713942000),
+(1008, 'Mateo', 'Gonzalez', 'mateo08', 'MateoPass08', 1713948000),
+(1009, 'Lila', 'Nguyen', 'lila09', 'LilaP@ss09', 1713954000),
+(1010, 'Henry', 'Foster', 'henry10', 'HenryPass10!', 1713960000),
+(1011, 'Aisha', 'Jamal', 'aisha11', 'AishaPass11!', 1713966000),
+(1012, 'Sophia', 'Anderson', 'sophia12', 'SophiaPass12!', 1713972000),
+(1013, 'Dylan', 'Taylor', 'dylan13', 'DylanP@ss13!', 1713978000),
+(1014, 'Zara', 'Khan', 'zara14', 'ZaraPass14!', 1713984000),
+(1015, 'Liam', 'O\'Connor', 'liam15', 'LiamPass15!', 1713990000);
+
 
 
 INSERT INTO friends (friendship_id, friendA, friendB, status, time_posted_epoch) VALUES
@@ -152,14 +153,51 @@ INSERT INTO likes (like_id, liked_by, message_id, comment_id, time_posted_epoch)
 (4014, 1001, 2014, NULL, 1713987600),
 (4015, 1002, 2015, NULL, 1713993600);
 
+-- Drop the existing profile table if it exists
+DROP TABLE IF EXISTS profile;
+
+-- Recreate the profile table with the new columns
+CREATE TABLE profile (
+    profile_id INT PRIMARY KEY AUTO_INCREMENT,
+    account_id INT NOT NULL UNIQUE,
+    bio TEXT,
+    avatar_url VARCHAR(255),
+    location VARCHAR(100),
+    created_at_epoch BIGINT, -- New column for created_at_epoch
+    updated_at_epoch BIGINT, -- New column for updated_at_epoch
+    FOREIGN KEY (account_id) REFERENCES account(account_id) ON DELETE CASCADE
+);
 
 
 
+CREATE TABLE profile (
+    profile_id INT PRIMARY KEY AUTO_INCREMENT,
+    account_id INT NOT NULL UNIQUE,
+    bio TEXT,
+    avatar_url VARCHAR(255),
+    location VARCHAR(100),
+    created_at_epoch BIGINT, -- New column for created_at_epoch
+    updated_at_epoch BIGINT, -- New column for updated_at_epoch
+    FOREIGN KEY (account_id) REFERENCES account(account_id) ON DELETE CASCADE
+);
 
 
-
-
-
+IINSERT INTO profile (profile_id, account_id, bio, avatar_url, location, created_at_epoch, updated_at_epoch) VALUES
+(1001, 1001, 'Software engineer who enjoys hiking and photography.', 'http://localhost:8080/images/profiles/WilliamHarrison.jpg', 'San Francisco, CA', 1713906000, 1713906000),
+(1002, 1002, 'Data scientist and aspiring chef.', 'http://localhost:8080/images/profiles/EmmaClark.jpg', 'Seattle, WA', 1713912000, 1713912000),
+(1003, 1003, 'Lover of books and coding.', 'http://localhost:8080/images/profiles/EthanBennett.jpg', 'Austin, TX', 1713918000, 1713918000),
+(1004, 1004, 'Art enthusiast and music lover.', 'http://localhost:8080/images/profiles/OliviaPeterson.jpg', 'Denver, CO', 1713924000, 1713924000),
+(1005, 1005, 'Travel blogger and tech junkie.', 'http://localhost:8080/images/profiles/AmeliaRoberts.jpg', 'Chicago, IL', 1713930000, 1713930000),
+(1006, 1006, 'Fitness enthusiast and full-stack developer.', 'http://localhost:8080/images/profiles/JamesMorgan.jpg', 'Miami, FL', 1713936000, 1713936000),
+(1007, 1007, 'Digital marketer and cat lover.', 'http://localhost:8080/images/profiles/IsabellaWood.jpg', 'New York, NY', 1713942000, 1713942000),
+(1008, 1008, 'Runner, coder, and coffee aficionado.', 'http://localhost:8080/images/profiles/MateoGonzalez.jpg', 'Boston, MA', 1713948000, 1713948000),
+(1009, 1009, 'Aspiring entrepreneur with a passion for tech.', 'http://localhost:8080/images/profiles/LilaNguyen.jpg', 'Portland, OR', 1713954000, 1713954000),
+(1010, 1010, 'Freelance writer and part-time musician.', 'http://localhost:8080/images/profiles/HenryFoster.jpg', 'Los Angeles, CA', 1713960000, 1713960000),
+(1011, 1011, 'Health coach and avid reader.', 'http://localhost:8080/images/profiles/AishaJamal.jpg', 'Phoenix, AZ', 1713966000, 1713966000),
+(1012, 1012, 'Software engineer passionate about machine learning.', 'http://localhost:8080/images/profiles/SophiaAnderson.jpg', 'Atlanta, GA', 1713972000, 1713972000),
+(1013, 1013, 'Photographer and storyteller.', 'http://localhost:8080/images/profiles/DylanTaylor.jpg', 'Salt Lake City, UT', 1713978000, 1713978000),
+(1014, 1014, 'Adventure seeker and tech enthusiast.', 'http://localhost:8080/images/profiles/ZaraKhan.jpg', 'Dallas, TX', 1713984000, 1713984000),
+(1015, 1015, 'Baker by day, coder by night.', 'http://localhost:8080/images/profiles/LiamOConnor.jpg', 'Houston, TX', 1713990000, 1713990000);
 
 
 
