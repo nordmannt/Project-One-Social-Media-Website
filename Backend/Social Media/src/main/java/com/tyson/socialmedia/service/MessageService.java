@@ -3,7 +3,7 @@ package com.tyson.socialmedia.service;
 import com.tyson.socialmedia.DTO.*;
 import com.tyson.socialmedia.entity.Message;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.stereotype.Service;
 import com.tyson.socialmedia.repository.MessageRepository;
 import java.util.*;
@@ -11,11 +11,6 @@ import java.util.stream.Collectors;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.math.BigInteger;
-
-
-
-import jakarta.transaction.Transactional;
 
 
 //Creating MessageService class to interface between the controller and the message repository

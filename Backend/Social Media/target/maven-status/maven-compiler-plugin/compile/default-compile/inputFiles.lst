@@ -1,13 +1,11 @@
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\Configuration\DataSourceConfig.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\Configuration\FrontEndConfig.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\AccountController.java
-C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\AuthController.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\CommentsController.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\FriendController.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\JoyController.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\MessageController.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\ProfileController.java
-C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\controller\SocialMediaController.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\DTO\AccountDTO.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\DTO\CommentDTO.java
 C:\Users\tyson\OneDrive\Desktop\Revature\Infosys\GIT\Project One\Backend\Social Media\src\main\java\com\tyson\socialmedia\DTO\CommentsWithUsername.java

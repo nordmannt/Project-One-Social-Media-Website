@@ -5,15 +5,12 @@ import com.tyson.socialmedia.service.*;
 import jakarta.validation.Valid;
 import com.tyson.socialmedia.entity.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
-import org.springframework.core.io.Resource;
-import java.nio.file.Files;
-import org.springframework.http.HttpHeaders;
+
 import com.tyson.socialmedia.DTO.*;
 
 
@@ -22,10 +19,7 @@ import com.tyson.socialmedia.DTO.*;
  @RestController
  public class MessageController {
 
-    //dependency injection to obtain an instance of the AccountService class
-    @Autowired
-    private AccountService accountService;
-
+   
     //dependency injection to obtain an instance of the MessageService class
     @Autowired
     private MessageService messageService;

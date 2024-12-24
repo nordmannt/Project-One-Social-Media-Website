@@ -216,7 +216,19 @@ const styles = {
     backgroundColor: "#ffffff",
   },
 
-  
+  yellowLikeButton: {
+    padding: "10px 15px",
+    backgroundColor: "#FFD700", // Yellow color
+    color: "#333", // Dark text for contrast
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontWeight: "bold",
+    boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  },
+  likeButtonContainer: {
+    marginLeft: "auto", // Push the button to the right
+  },
 };
 
 export default NewsFeed;

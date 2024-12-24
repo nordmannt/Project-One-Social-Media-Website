@@ -68,7 +68,7 @@ const Login = () => {
         <LogoContainer>
           <div>
             <h1 style={{ fontSize: '3rem', color: '#6A5ACD', marginBottom: '0.5rem' }}>Chummy</h1>
-            <p style={{ fontSize: '1.5rem', color: '#494949' }}>The network</p>
+            <p style={{ fontSize: '1.5rem', color: '#494949' }}>The Network</p>
           </div>
         </LogoContainer>
       </LogoSection>

@@ -81,7 +81,7 @@ INSERT INTO account (account_id, first_name, last_name, username, password, crea
 (1012, 'Sophia', 'Anderson', 'sophia12', 'SophiaPass12!', 1713972000),
 (1013, 'Dylan', 'Taylor', 'dylan13', 'DylanP@ss13!', 1713978000),
 (1014, 'Zara', 'Khan', 'zara14', 'ZaraPass14!', 1713984000),
-(1015, 'Liam', 'O\'Connor', 'liam15', 'LiamPass15!', 1713990000);
+(1015, 'Liam', 'Anderson', 'liam15', 'LiamPass15!', 1713990000);
 
 
 
@@ -153,20 +153,8 @@ INSERT INTO likes (like_id, liked_by, message_id, comment_id, time_posted_epoch)
 (4014, 1001, 2014, NULL, 1713987600),
 (4015, 1002, 2015, NULL, 1713993600);
 
--- Drop the existing profile table if it exists
-DROP TABLE IF EXISTS profile;
 
--- Recreate the profile table with the new columns
-CREATE TABLE profile (
-    profile_id INT PRIMARY KEY AUTO_INCREMENT,
-    account_id INT NOT NULL UNIQUE,
-    bio TEXT,
-    avatar_url VARCHAR(255),
-    location VARCHAR(100),
-    created_at_epoch BIGINT, -- New column for created_at_epoch
-    updated_at_epoch BIGINT, -- New column for updated_at_epoch
-    FOREIGN KEY (account_id) REFERENCES account(account_id) ON DELETE CASCADE
-);
+
 
 
 
@@ -182,7 +170,7 @@ CREATE TABLE profile (
 );
 
 
-IINSERT INTO profile (profile_id, account_id, bio, avatar_url, location, created_at_epoch, updated_at_epoch) VALUES
+INSERT INTO profile (profile_id, account_id, bio, avatar_url, location, created_at_epoch, updated_at_epoch) VALUES
 (1001, 1001, 'Software engineer who enjoys hiking and photography.', 'http://localhost:8080/images/profiles/WilliamHarrison.jpg', 'San Francisco, CA', 1713906000, 1713906000),
 (1002, 1002, 'Data scientist and aspiring chef.', 'http://localhost:8080/images/profiles/EmmaClark.jpg', 'Seattle, WA', 1713912000, 1713912000),
 (1003, 1003, 'Lover of books and coding.', 'http://localhost:8080/images/profiles/EthanBennett.jpg', 'Austin, TX', 1713918000, 1713918000),
@@ -197,7 +185,16 @@ IINSERT INTO profile (profile_id, account_id, bio, avatar_url, location, created
 (1012, 1012, 'Software engineer passionate about machine learning.', 'http://localhost:8080/images/profiles/SophiaAnderson.jpg', 'Atlanta, GA', 1713972000, 1713972000),
 (1013, 1013, 'Photographer and storyteller.', 'http://localhost:8080/images/profiles/DylanTaylor.jpg', 'Salt Lake City, UT', 1713978000, 1713978000),
 (1014, 1014, 'Adventure seeker and tech enthusiast.', 'http://localhost:8080/images/profiles/ZaraKhan.jpg', 'Dallas, TX', 1713984000, 1713984000),
-(1015, 1015, 'Baker by day, coder by night.', 'http://localhost:8080/images/profiles/LiamOConnor.jpg', 'Houston, TX', 1713990000, 1713990000);
+(1015, 1015, 'Baker by day, coder by night.', 'http://localhost:8080/images/profiles/LiamAnderson.jpg', 'Houston, TX', 1713990000, 1713990000);
+
+
+
+
+
+
+
+
+
 
 
 

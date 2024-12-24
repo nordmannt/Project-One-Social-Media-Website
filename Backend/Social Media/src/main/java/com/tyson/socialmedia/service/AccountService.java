@@ -33,6 +33,9 @@ public class AccountService {
     }
 
 
+
+
+
    public List<AccountDTO> searchUsers(String query) {
     // Fetch accounts based on query
     List<Account> accounts = accountRepository.searchUsers(query);
@@ -55,6 +58,13 @@ public class AccountService {
 }
 
     
+
+
+
+
+
+
+
 
     //login method to check that the username and password are valid for the account
    // public boolean login(Account account){

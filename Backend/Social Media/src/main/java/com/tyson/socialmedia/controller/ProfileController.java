@@ -30,20 +30,5 @@ public class ProfileController {
         return ResponseEntity.ok(profileDTO);
     }
 
-    /*
-    @PostMapping("/{accountId}")
-    public ResponseEntity<ProfileDTO> createOrUpdateProfile(
-        @PathVariable Integer accountId, @RequestBody ProfileDTO profileDTO) {
-        // Add logic to map ProfileDTO to Profile and save it
-        Profile updatedProfile = profileService.updateProfileFromDTO(accountId, profileDTO);
-        ProfileDTO updatedDTO = new ProfileDTO(
-            updatedProfile.getAccount().getFirstName(),
-            updatedProfile.getAccount().getLastName(),
-            updatedProfile.getBio(),
-            updatedProfile.getAvatarUrl(),
-            updatedProfile.getLocation()
-        );
-        return ResponseEntity.ok(updatedDTO);
-    }
-    */
+ 
 }

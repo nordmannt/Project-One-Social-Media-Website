@@ -36,7 +36,9 @@ public class Account {
     @Column(name = "created_at_epoch", nullable = false)
     private Long createdAtEpoch;
 
-    
+     public Account() {
+        this.createdAtEpoch = Instant.now().getEpochSecond(); // Set timestamp on creation
+    }
     // Getters and Setters
     public Integer getAccountId() {
         return accountId;
