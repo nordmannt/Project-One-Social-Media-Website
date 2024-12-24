@@ -2,7 +2,7 @@
 export { ButtonBase, PrimaryButton, SecondaryButton, DangerButton } from './Button';
 
 // Containers
-export { NewsFeedContainer, NavbarContainer, ProfileContainer,ContainerPlain, ContainerCard, ContainerFluid, LogoContainer } from './Container';
+export {PageContainer, NewsFeedContainer, TwoColumnContainer, ContentBox, NavbarContainer, ProfileContainer,ContainerPlain, ContainerCard, ContainerFluid, LogoContainer } from './Container';
 
 // Inputs
 export { Input, Textarea } from './Input';

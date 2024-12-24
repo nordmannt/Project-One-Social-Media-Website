@@ -163,7 +163,7 @@ friendSearchContainer: {
     justifyContent: "center",
     alignItems: "center",
     padding: "10px",
-    borderBottom: "1px solid #ddd", // Optional: Adds a bottom border for separation
+   
   },
   searchInput: {
     width: "200px",

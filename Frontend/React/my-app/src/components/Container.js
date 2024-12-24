@@ -20,7 +20,13 @@ export const NavbarContainer = styled.div`
   border-radius: ${theme.radius.md}; /* Rounded corners */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Shadow around the navbar */
 `;
-
+export const PageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers the red box horizontally */
+  gap: 1rem; /* Adds spacing between the red and blue boxes */
+  padding: 1rem;
+`;
 
 
 export const NewsFeedContainer = styled.div`
@@ -33,7 +39,15 @@ export const NewsFeedContainer = styled.div`
   align-items: center;        /* Centers content horizontally */
 `;
 
-
+export const ContentBox = styled.div`
+  width: 90%; /* Wider blue box */
+  max-width: 1400px; /* Optional: Limit max width */
+  padding: 1rem;
+  background-color: white;
+  border: 2px solid blue; /* Blue border */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow */
+`;
 
 
 export const ProfileContainer = styled.div`

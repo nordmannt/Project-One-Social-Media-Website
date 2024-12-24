@@ -35,7 +35,7 @@ const Login = () => {
       if (token && userId) {
         // Store token and userId in localStorage
         localStorage.setItem('token', token);
-        localStorage.setItem('userId', userId);
+        localStorage.setItem('userId', loggedInUserId);
         console.log('Login Success: Token and UserId stored');
       } else {
         console.error('Login response missing token or userId');
@@ -68,7 +68,7 @@ const Login = () => {
         <LogoContainer>
           <div>
             <h1 style={{ fontSize: '3rem', color: '#6A5ACD', marginBottom: '0.5rem' }}>Chummy</h1>
-            <p style={{ fontSize: '1.5rem', color: '#494949' }}>Just Better!</p>
+            <p style={{ fontSize: '1.5rem', color: '#494949' }}>The network</p>
           </div>
         </LogoContainer>
       </LogoSection>

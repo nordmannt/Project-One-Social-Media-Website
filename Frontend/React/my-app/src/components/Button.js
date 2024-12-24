@@ -16,7 +16,7 @@ export const ButtonBase = styled.button`
 export const PrimaryButton = styled(ButtonBase)`
   background-color: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.white};
-
+ border: ${(props) => props.theme.borders.thick}
   &:hover {
     background-color: ${(props) => props.theme.colors.primaryDark};
   }

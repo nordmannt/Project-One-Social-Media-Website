@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import axios from 'axios';
-
+import { theme } from "../styles/Themes";
+import {
+  PrimaryButton,
+} from "../components";
 const PostMessage = ({onPostSuccess}) => {
     const [newMessage, setNewMessage] = useState('');
     
@@ -28,13 +31,26 @@ const PostMessage = ({onPostSuccess}) => {
     <div className ="post-message-form">
     <input 
     type="text"
-    placeholder="Share something with your chums!"
+    placeholder="Share!"
     value={newMessage}
     onChange={(e) => setNewMessage(e.target.value)}
+    style={(styles.textArea)}
     />
-    <button onClick={handlePostMessage}>Post</button>
+    <PrimaryButton onClick={handlePostMessage}>Post</PrimaryButton>
     </div>
   );
 };
 
+
+const styles = {textArea: {
+    width: "90%",
+    padding: "10px",
+    fontSize: "1rem",
+    borderRadius: "8px",
+    border: "1px solid #ccc",
+    resize: "none",
+    marginBottom: "10px",
+  },
+};
 export default PostMessage
+

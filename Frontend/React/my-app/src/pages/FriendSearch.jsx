@@ -153,9 +153,9 @@ const styles = {
     maxHeight: "200px",
     overflowY: "auto",
     backgroundColor: "white",
-    border: "1px solid #ddd",
+  
     borderRadius: "5px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+
     zIndex: 1000,
   },
   dropdownItem: {

@@ -8,7 +8,7 @@ import Navbar from "./Navbar";
 import { theme } from "../styles/Themes";
 import {
   NavbarContainer,
-  NewsFeedContainer,
+ 
   PrimaryButton,
   ContainerCard,
   Input,
@@ -100,69 +100,126 @@ const NewsFeed = () => {
           onLogout={handleLogout}
         />
       </NavbarContainer>
-      <NewsFeedContainer>
-        <main>
-          <section id="newsFeed" style={styles.section}>
-            <MainTitle>News Feed</MainTitle>
-            <PostMessage onPostSuccess={fetchMessages} />
-            {loading ? (
-              <p>Loading posts...</p>
-            ) : error ? (
-              <p>{error}</p>
-            ) : (
-              <div style={styles.postContainer}>
-                {posts.length > 0 ? (
-                  posts.map((post) => (
-                    <ContainerCard key={post.messageId} style={styles.post}>
-                      <h2>{post.messageText}</h2>
-                      <p>
-                        Posted by{" "}
-                        <a
-                          href={`/profile/${post.postedBy}`}
-                          style={{ textDecoration: "none", color: "blue" }}
-                        >
-                          {post.firstName} {post.lastName}
-                        </a>{" "}
-                        on {new Date(post.timePosted * 1000).toLocaleString()}
-                      </p>
-                      <LikeButton
-                        type="message"
-                        id={post.messageId}
-                        initialLikes={post.likeCount || 0}
-                        userId={userId}
-                      />
-                      <Comments messageId={post.messageId} userId={userId} />
-                    </ContainerCard>
-                  ))
-                ) : (
-                  <p>No posts to display.</p>
-                )}
-              </div>
-            )}
-          </section>
-        </main>
-        <footer>
-          <p>&copy; Tyson Nordmann Revature SocialMediaApp. All rights reserved</p>
-        </footer>
-      </NewsFeedContainer>
+  {/* New Rectangular Box Section */}
+  <div style={styles.rectangularBox}>
+      <section id="newsFeed" style={styles.newsFeedBox}>
+          <MainTitle>News Feed</MainTitle>
+          
+          <PostMessage onPostSuccess={fetchMessages} />
+        </section>
+      </div>
+  
+      <div>
+  
+        {/* Blue Box - Posts */}
+        <section style={styles.postsContainer}>
+          {loading ? (
+            <p>Loading posts...</p>
+          ) : error ? (
+            <p>{error}</p>
+          ) : (
+            <div style={styles.postWrapper}>
+              {posts.length > 0 ? (
+                posts.map((post) => (
+                  <ContainerCard key={post.messageId} style={styles.post}>
+                    <h2>{post.messageText}</h2>
+                    <p>
+                      Posted by{" "}
+                      <a
+                        href={`/profile/${post.postedBy}`}
+                        style={{ textDecoration: "none", color: "blue" }}
+                      >
+                        {post.firstName} {post.lastName}
+                      </a>{" "}
+                      on {new Date(post.timePosted * 1000).toLocaleString()}
+                    </p>
+                    <LikeButton
+                      type="message"
+                      id={post.messageId}
+                      initialLikes={post.likeCount || 0}
+                      userId={userId}
+                    
+                    />
+                   
+                   
+                    <Comments messageId={post.messageId} userId={userId} />
+                   
+                  </ContainerCard>
+                ))
+              ) : (
+                <p>No posts to display.</p>
+              )}
+            </div>
+          )}
+        </section>
+      </div>
+  
+      <footer style={styles.footer}>
+        <p>&copy; Tyson Nordmann Revature SocialMediaApp. All rights reserved</p>
+      </footer>
     </div>
+
+  
+     
   );
+  
 };
 
 const styles = {
+ 
+    rectangularBox: {
+        width: "50%", // Full-width box
+        padding: "20px",
+        margin: "20px 0", // Spacing between navbar and the rest
+        backgroundColor: "#f5f5f5", // Light gray background
+        border: "5px solid #FF0000", // Red border for About Me section
+    marginBottom: "20px", // Spacing below
+    marginTop: "20px", // Spacing below
+    marginRight: "100px", // Spacing below
+    marginLeft: "500px", // Spacing below
+    backgroundColor: "#ffffff",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    borderRadius: "15px",
+      },
+
   section: {
-    padding: theme.spacing.lg,
+    flex: "1 1 30%",
+    backgroundColor: "#f9f9f9",
+    padding: "20px",
+    borderRadius: "15px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    textAlign: "center",
+    border: "5px solid #FF0000", // Red border for About Me section
+    marginBottom: "20px", // Spacing below
+    marginTop: "20px", // Spacing below
+    marginRight: "20px", // Spacing below
+    backgroundColor: "#ffffff",
   },
   postContainer: {
-    display: "flex",
-    flexDirection: "column",
-    gap: theme.spacing.md,
+    flex: "1 1 200%",
+    backgroundColor: "#ffffff",
+    padding: "20px",
+    borderRadius: "15px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    border: "5px solid #0000FF", // Blue border for Posts section
+    marginBottom: "20px", // Spacing below
+    marginTop: "50px", // Spacing below
+    marginLeft: "10px", // Spacing below
   },
   post: {
-    padding: theme.spacing.md,
-    borderRadius: theme.radius.md,
-    boxShadow: theme.shadows.medium,
+    position: "relative", // Allows for positioning of comments
+    padding: "15px",
+    marginBottom: "30px", // Spacing between posts
+    borderRadius: "10px",
+    border: "5px solid #008000", // Green border for posts
+    marginBottom: "20px", // Spacing below
+    marginTop: "50px", // Spacing below
+    marginLeft: "40px", // Spacing below
+    
+    backgroundColor: "#ffffff",
   },
+
+  
 };
 
 export default NewsFeed;

@@ -37,13 +37,13 @@ const Comments = ({ messageId, userId }) => {
             {error && <p>{error}</p>}
             {!loading && !error && comments.length === 0 && <p>No comments. Be the first to comment.</p>}
             {!loading && !error && comments.length > 0 && (
-                <ul>
+                <ul style={{ listStyle: 'none', padding: 3, margin: 3 }}>
                     {comments.map((comment) => (
                         <li key={comment.commentId}>
                             <p>{comment.commentText}</p>
                             <small>
                                 Posted by{' '}
-                                <a href={`/profile/${comment.commentedby}`} style={{ textDecoration: 'none', color: 'blue' }}>
+                                <a href={`/profile/${comment.commentedby}`} style={{ textDecoration: "none",  color: 'blue' }}>
                                     {comment.firstName} {comment.lastName}
                                 </a>{' '}
                                 on {comment.timePosted}

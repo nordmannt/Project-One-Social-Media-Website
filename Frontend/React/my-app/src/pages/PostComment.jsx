@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { theme } from "../styles/Themes";
+import {
+  PrimaryButton
+  } from "../components";
 const PostComment = ({ messageId, onCommentSuccess }) => {
     const [newComment, setNewComment] = useState('');
     
@@ -29,11 +32,22 @@ const PostComment = ({ messageId, onCommentSuccess }) => {
                 type="text"
                 placeholder="Share a comment"
                 value={newComment}
+                style={(styles.textArea)}
                 onChange={(e) => setNewComment(e.target.value)}
             />
-            <button onClick={handlePostComment}>Post</button>
+            <PrimaryButton onClick={handlePostComment}>Post</PrimaryButton>
         </div>
     );
 };
-
+const styles = {textArea: {
+    width: "50%",
+    padding: "10px",
+    fontSize: "1rem",
+    borderRadius: "3px",
+    border: "1px solid #ccc",
+    resize: "none",
+    marginBottom: "5px",
+    marginRight: "15px",
+  },
+};
 export default PostComment;

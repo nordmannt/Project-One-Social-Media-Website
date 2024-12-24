@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const FriendsList = ({ userId}) => {
+const FriendsList = () => {
   const [friends, setFriends] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+  
   useEffect(() => {
     const fetchFriends = async () => {
       try {

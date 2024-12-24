@@ -28,10 +28,30 @@ const LikeButton = ({ type, id, initialLikes, userId }) => {
     };
 
     return (
-        <button onClick={handleLike}>
+        <button onClick={handleLike} style={styles.yellowLikeButton}>
             {liked ? 'Unlike' : 'Like'} ({likes})
+            
         </button>
     );
 };
 
+const styles = {
+ 
+    yellowLikeButton: {
+        float: "right",
+        padding: "5px 10px", // Small size
+        backgroundColor: "rgba(255, 215, 0, 0.8)", // Yellow with opacity
+        color: "#333", // Dark text for contrast
+        border: "none",
+        borderRadius: "12px", // Rounded corners
+        cursor: "pointer",
+        fontWeight: "bold",
+        fontSize: "0.85rem", // Slightly smaller text
+        boxShadow: "0 1px 3px rgba(0, 0, 0, 0.2)", // Subtle shadow for depth
+        transition: "all 0.3s ease", // Smooth transition on hover
+      },
+  likeButtonContainer: {
+    marginLeft: "auto", // Push the button to the right
+  },
+};
 export default LikeButton;
