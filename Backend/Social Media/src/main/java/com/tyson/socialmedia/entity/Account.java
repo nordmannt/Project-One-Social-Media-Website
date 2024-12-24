@@ -2,6 +2,9 @@ package com.tyson.socialmedia.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+
+import java.time.Instant;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -33,6 +36,7 @@ public class Account {
     @Column(name = "created_at_epoch", nullable = false)
     private Long createdAtEpoch;
 
+    
     // Getters and Setters
     public Integer getAccountId() {
         return accountId;

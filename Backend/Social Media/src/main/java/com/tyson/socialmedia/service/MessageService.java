@@ -50,6 +50,23 @@ public class MessageService {
 
 }
 
+public List<MessageWithImagesDTO> getMessagesWithImages(Integer userId) {
+    List<Object[]> results = messageRepository.getMyMessagesWithImages(userId);
+    return results.stream().map(row -> {
+        MessageWithImagesDTO dto = new MessageWithImagesDTO();
+        dto.setMessageId((Long) row[0]);
+        dto.setPostedBy((Long) row[1]);
+        dto.setMessageText((String) row[2]);
+        dto.setTimePosted((Long) row[3]);
+        dto.setFirstName((String) row[4]);
+        dto.setLastName((String) row[5]);
+        dto.addImageUrl((String) row[6]); // Map the image URL
+        return dto;
+    }).collect(Collectors.toList());
+}
+
+
+
     public List<MessageDTO> getMessages(){
         List<Object[]> results = messageRepository.getMessagesWithAccountDetails();
         return results.stream().map(row-> {

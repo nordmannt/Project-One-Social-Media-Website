@@ -6,7 +6,7 @@ export const MainTitle = styled.h1`
  textShadow: ${theme.shadows.large};
   font-size: 2rem;
   font-weight: ${theme.fonts.bold};
- 
+  color: ${theme.colors.primary};
   text-align: center;
   margin-bottom: ${theme.spacing.sm};
 `;

@@ -41,6 +41,29 @@ public interface MessageRepository extends JpaRepository<Message, Integer>{
         """, nativeQuery = true)    
     List<Object[]>getProfileMessagesWithAccountDetails(@Param("userId") Integer userId); 
 
+    @Query(value = """
+        SELECT 
+            m.message_id AS messageId,
+            m.posted_by AS postedBy,
+            m.message_text AS messageText,
+            m.time_posted_epoch AS timePosted,
+            a.first_name AS firstName,
+            a.last_name AS lastName,
+            i.image_url AS imageUrl -- Include the single image URL for the message
+        FROM message m
+        JOIN account a ON m.posted_by = a.account_id
+        LEFT JOIN images i ON m.message_id = i.message_id -- Join the images table to get the image URL
+        WHERE 
+            m.posted_by IN (
+                SELECT friendB FROM friends f WHERE friendA = :userId AND f.status = 'accepted'
+                UNION 
+                SELECT friendA FROM friends f WHERE friendB = :userId AND f.status = 'accepted'
+            )
+            OR m.posted_by = :userId
+        ORDER BY m.time_posted_epoch DESC
+    """, nativeQuery = true)
+    List<Object[]> getMyMessagesWithImages(@Param("userId") Integer userId);
+    
    
 }
 

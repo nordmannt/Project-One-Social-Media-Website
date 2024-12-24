@@ -35,7 +35,7 @@ const Login = () => {
       if (token && userId) {
         // Store token and userId in localStorage
         localStorage.setItem('token', token);
-        localStorage.setItem('userId', loggedInUserId);
+        localStorage.setItem('userId', userId);
         console.log('Login Success: Token and UserId stored');
       } else {
         console.error('Login response missing token or userId');

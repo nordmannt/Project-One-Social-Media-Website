@@ -140,10 +140,7 @@ const NewsFeed = () => {
                       userId={userId}
                     
                     />
-                   
-                   
                     <Comments messageId={post.messageId} userId={userId} />
-                   
                   </ContainerCard>
                 ))
               ) : (

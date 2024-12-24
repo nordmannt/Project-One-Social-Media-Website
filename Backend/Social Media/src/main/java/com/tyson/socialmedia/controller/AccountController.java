@@ -116,7 +116,7 @@ import io.jsonwebtoken.JwtException;
      }
 
 
-}
+
   /*
      @GetMapping("/login")
      @CrossOrigin(origins = "http://localhost:5173")
@@ -142,7 +142,7 @@ import io.jsonwebtoken.JwtException;
         .header(HttpHeaders.CONTENT_TYPE, "text/html")
         .body(resource);
     }
-
+*/
 
       
     //POST registerUser method to register user accounts, validates account information  
@@ -154,26 +154,15 @@ import io.jsonwebtoken.JwtException;
             if(exists){
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("Account already exists.");
                
-                /*
-                Resource resource = new ClassPathResource("static/login.html");
-                return ResponseEntity
-                .status(HttpStatus.OK)
-                .header(HttpHeaders.CONTENT_TYPE, "text/html")
-                .body(resource);*/
-
-        /*/        
+              
+          
             }
-            //Account account = new Account();
-            //account.setUsername(username);
-            //account.setPassword(password);
+           
             Account createdAccount = accountService.register(account);
             return ResponseEntity.status(HttpStatus.CREATED).body("Registration successful!");}
-            /*Resource resource = new ClassPathResource("static/successfulRegistration.html");
-            return ResponseEntity
-            .status(HttpStatus.OK)
-            .header(HttpHeaders.CONTENT_TYPE, "text/html")
-            .body(resource);*/
-/*/
+        }
+    
+     /*     
       @PostMapping("/login")
       @CrossOrigin(origins = "http://localhost:5173")
 public ResponseEntity<?> login(@RequestBody @Valid LoginRequest loginRequest) {

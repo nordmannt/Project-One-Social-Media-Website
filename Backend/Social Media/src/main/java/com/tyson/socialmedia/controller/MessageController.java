@@ -57,6 +57,14 @@ import com.tyson.socialmedia.DTO.*;
      return ResponseEntity.ok(messages); 
  }
 
+/*
+ @GetMapping("/api/auth/messages/{userId}")
+ public ResponseEntity<List<MessageWithImagesDTO>> getMyNewsfeed(@PathVariable Integer userId){
+
+     List<MessageWithImagesDTO> messages = messageService.getMessagesWithImages(userId);
+     return ResponseEntity.ok(messages); 
+ }
+     */
 
  @GetMapping("/api/auth/messages/{userId}")
  public ResponseEntity<List<MessageDTO>> getMyNewsfeed(@PathVariable Integer userId){
@@ -64,6 +72,8 @@ import com.tyson.socialmedia.DTO.*;
      List<MessageDTO> messages = messageService.getMyMessages(userId);
      return ResponseEntity.ok(messages); 
  }
+
+
 
  @GetMapping("/api/auth/{userId}messages/")
  public ResponseEntity<List<MessageDTO>> getMyProfilefeed(@PathVariable Integer userId){
